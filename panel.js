@@ -1,3 +1,35 @@
+/* ==========================
+   Login Protection
+========================== */
+
+const PASSWORD = "Amir2026";
+
+const login = prompt("رمز ورود به پنل را وارد کنید:");
+
+if(login !== PASSWORD){
+
+document.body.innerHTML = `
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:#050816;
+color:white;
+font-family:Vazirmatn;
+flex-direction:column;
+">
+
+<h1>❌ دسترسی غیرمجاز</h1>
+
+<p>رمز عبور اشتباه است.</p>
+
+</div>
+`;
+
+throw new Error("Access Denied");
+
+}
 /*==================================
  Amir Gamer Admin Panel
 ==================================*/
