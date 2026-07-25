@@ -351,3 +351,49 @@ window.open("https://rubika.ir/USERNAME","_blank");
 ==================================*/
 
 console.log("✅ Amir Gamer Loaded");
+/* ==========================
+   News System
+========================== */
+
+const newsContainer = document.getElementById("newsList");
+
+if(newsContainer){
+
+fetch("data.json")
+.then(res => res.json())
+.then(data => {
+
+newsContainer.innerHTML="";
+
+data.news.forEach(item=>{
+
+newsContainer.innerHTML += `
+<div class="news-card">
+
+<img src="${item.image}" alt="${item.title}">
+
+<div class="news-content">
+
+<h3>${item.title}</h3>
+
+<p>${item.description}</p>
+
+</div>
+
+</div>
+`;
+
+});
+
+})
+.catch(()=>{
+
+newsContainer.innerHTML=`
+<h2 style="text-align:center;color:red;">
+خطا در دریافت اخبار
+</h2>
+`;
+
+});
+
+}
