@@ -4,8 +4,10 @@
 
 const PASSWORD = "Amir2026";
 
-const login = prompt("رمز ورود به پنل را وارد کنید:");
+alert("panel.js اجرا شد");
 
+const login = prompt("رمز ورود به پنل را وارد کنید:");
+                   
 if(login !== PASSWORD){
 
 document.body.innerHTML = `
