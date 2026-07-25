@@ -79,7 +79,39 @@ line-height:1.8;
 <div id="newsList" class="news-grid"></div>
 
 </div>
+<script>
+const newsList = document.getElementById("newsList");
 
+const news = JSON.parse(localStorage.getItem("news")) || [];
+
+if(news.length === 0){
+
+newsList.innerHTML = `
+<div class="news-card">
+<div class="news-content">
+<h3>هنوز خبری منتشر نشده است.</h3>
+<p>اولین خبر را از پنل مدیریت ثبت کنید.</p>
+</div>
+</div>
+`;
+
+}else{
+
+news.forEach(item=>{
+
+newsList.innerHTML += `
+<div class="news-card">
+<div class="news-content">
+<h3>${item.title}</h3>
+<p>${item.text}</p>
+</div>
+</div>
+`;
+
+});
+
+}
+</script>
 <script src="script.js"></script>
 
 </body>
