@@ -397,3 +397,45 @@ newsContainer.innerHTML=`
 });
 
 }
+/* =========================
+   Load News From data.json
+========================= */
+
+const newsList = document.getElementById("newsList");
+
+if(newsList){
+
+fetch("data.json")
+.then(response=>response.json())
+.then(data=>{
+
+newsList.innerHTML="";
+
+data.news.forEach(news=>{
+
+newsList.innerHTML+=`
+
+<div class="card">
+
+<h3>${news.title}</h3>
+
+<p>${news.description}</p>
+
+<small>${news.date}</small>
+
+</div>
+
+`;
+
+});
+
+})
+.catch(error=>{
+
+console.log(error);
+
+newsList.innerHTML="<p>❌ خطا در بارگذاری اخبار</p>";
+
+});
+
+}
