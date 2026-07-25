@@ -4,6 +4,11 @@
       "title": "به Amir Gamer خوش آمدید",
       "description": "اولین خبر سایت منتشر شد.",
       "date": "2026-07-25"
+    },
+    {
+      "title": "خبر جدید",
+      "description": "این خبر از فایل data.json خوانده می‌شود.",
+      "date": "2026-07-26"
     }
   ],
 
@@ -11,12 +16,20 @@
     {
       "title": "آموزش FC25",
       "description": "آموزش‌های جدید به زودی منتشر می‌شود."
+    },
+    {
+      "title": "آموزش Minecraft",
+      "description": "مود، شیدر و نسخه‌های جدید."
     }
   ],
 
   "downloads": [
     {
       "title": "مودهای Minecraft",
+      "link": "#"
+    },
+    {
+      "title": "برنامه‌های اندروید",
       "link": "#"
     }
   ]
