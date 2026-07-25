@@ -1,0 +1,136 @@
+/*==================================
+ Amir Gamer Admin Panel
+==================================*/
+
+const title=document.getElementById("newsTitle");
+const text=document.getElementById("newsText");
+const addBtn=document.getElementById("addNews");
+const newsList=document.getElementById("newsList");
+
+let news=JSON.parse(localStorage.getItem("news"))||[];
+
+/* نمایش اخبار */
+
+function renderNews(){
+
+newsList.innerHTML="";
+
+news.forEach((item,index)=>{
+
+newsList.innerHTML+=`
+
+<div class="newsItem">
+
+<h3>${item.title}</h3>
+
+<p>${item.text}</p>
+
+<div class="actions">
+
+<button class="editBtn"
+onclick="editNews(${index})">
+
+ویرایش
+
+</button>
+
+<button class="deleteBtn"
+onclick="deleteNews(${index})">
+
+حذف
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* ثبت خبر */
+
+addBtn.onclick=()=>{
+
+if(title.value===""||text.value===""){
+
+alert("همه فیلدها را پر کنید.");
+
+return;
+
+}
+
+news.unshift({
+
+title:title.value,
+
+text:text.value
+
+});
+
+localStorage.setItem(
+
+"news",
+
+JSON.stringify(news)
+
+);
+
+title.value="";
+
+text.value="";
+
+renderNews();
+
+};
+
+/* حذف */
+
+function deleteNews(index){
+
+if(confirm("این خبر حذف شود؟")){
+
+news.splice(index,1);
+
+localStorage.setItem(
+
+"news",
+
+JSON.stringify(news)
+
+);
+
+renderNews();
+
+}
+
+}
+
+/* ویرایش */
+
+function editNews(index){
+
+title.value=news[index].title;
+
+text.value=news[index].text;
+
+news.splice(index,1);
+
+localStorage.setItem(
+
+"news",
+
+JSON.stringify(news)
+
+);
+
+renderNews();
+
+}
+
+/* شروع */
+
+renderNews();
