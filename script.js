@@ -1,0 +1,353 @@
+/*==================================
+ Amir Gamer v2
+==================================*/
+
+const body=document.body;
+
+const loading=document.getElementById("loading");
+
+const menuBtn=document.getElementById("menuBtn");
+
+const mobileMenu=document.getElementById("mobileMenu");
+
+const searchBtn=document.getElementById("searchBtn");
+
+const searchBox=document.getElementById("searchBox");
+
+const closeSearch=document.getElementById("closeSearch");
+
+const topBtn=document.getElementById("topBtn");
+
+const themeBtn=document.getElementById("themeBtn");
+
+/* Loading */
+
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+loading.style.opacity="0";
+
+loading.style.visibility="hidden";
+
+loading.style.pointerEvents="none";
+
+},900);
+
+});
+
+/* Particles */
+
+particlesJS("particles-js",{
+
+particles:{
+
+number:{value:70},
+
+color:{value:"#00d9ff"},
+
+shape:{type:"circle"},
+
+opacity:{value:.4},
+
+size:{value:3},
+
+line_linked:{
+
+enable:true,
+
+distance:160,
+
+color:"#00d9ff",
+
+opacity:.25
+
+},
+
+move:{enable:true,speed:2}
+
+}
+
+});
+
+/* Mobile Menu */
+
+menuBtn.onclick=()=>{
+
+mobileMenu.classList.toggle("active");
+
+};
+
+/* Search */
+
+searchBtn.onclick=()=>{
+
+searchBox.classList.add("active");
+
+};
+
+closeSearch.onclick=()=>{
+
+searchBox.classList.remove("active");
+
+};
+
+/* Back To Top */
+
+window.addEventListener("scroll",()=>{
+
+topBtn.style.display=
+
+window.scrollY>400
+
+?"block"
+
+:"none";
+
+});
+
+topBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+/*==================================
+ Theme
+==================================*/
+
+const savedTheme=localStorage.getItem("theme");
+
+if(savedTheme==="light"){
+
+body.classList.add("light");
+
+}
+
+themeBtn.onclick=()=>{
+
+body.classList.toggle("light");
+
+localStorage.setItem(
+
+"theme",
+
+body.classList.contains("light")
+
+?"light"
+
+:"dark"
+
+);
+
+};
+
+/*==================================
+ Counter Animation
+==================================*/
+
+function counter(id,end){
+
+const el=document.getElementById(id);
+
+if(!el)return;
+
+let n=0;
+
+const timer=setInterval(()=>{
+
+n+=Math.ceil(end/60);
+
+if(n>=end){
+
+n=end;
+
+clearInterval(timer);
+
+}
+
+el.textContent=n.toLocaleString();
+
+},25);
+
+}
+
+counter("videos",120);
+
+counter("members",850);
+
+counter("downloadsCount",5600);
+
+/*==================================
+ Social Buttons
+==================================*/
+
+document.getElementById("rubikaBtn")?.addEventListener("click",()=>{
+
+window.open("https://rubika.ir/USERNAME","_blank");
+
+});
+
+document.getElementById("aparatBtn")?.addEventListener("click",()=>{
+
+window.open("https://aparat.com/USERNAME","_blank");
+
+});
+
+document.getElementById("telegramBtn")?.addEventListener("click",()=>{
+
+window.open("https://t.me/USERNAME","_blank");
+
+});
+
+/*==================================
+ Download Buttons
+==================================*/
+
+document.querySelectorAll(".cardBtn").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+if(btn.textContent.includes("دانلود")){
+
+alert("📥 لینک دانلود بعداً اضافه می‌شود.");
+
+}
+
+});
+
+});
+/*==================================
+ Scroll Animation
+==================================*/
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{threshold:.15});
+
+document.querySelectorAll(".card,.section").forEach(el=>{
+
+el.style.opacity="0";
+
+el.style.transform="translateY(60px)";
+
+el.style.transition=".8s ease";
+
+observer.observe(el);
+
+});
+
+/*==================================
+ Search
+==================================*/
+
+const searchInput=document.getElementById("searchInput");
+
+searchInput?.addEventListener("input",()=>{
+
+const value=searchInput.value.toLowerCase();
+
+document.querySelectorAll(".card").forEach(card=>{
+
+card.style.display=
+
+card.innerText.toLowerCase().includes(value)
+
+?"block"
+
+:"none";
+
+});
+
+});
+
+/*==================================
+ Close Menu
+==================================*/
+
+document.addEventListener("click",(e)=>{
+
+if(
+
+mobileMenu.classList.contains("active") &&
+
+!mobileMenu.contains(e.target) &&
+
+e.target!==menuBtn
+
+){
+
+mobileMenu.classList.remove("active");
+
+}
+
+});
+
+/*==================================
+ Keyboard
+==================================*/
+
+document.addEventListener("keydown",(e)=>{
+
+if(e.key==="Escape"){
+
+searchBox.classList.remove("active");
+
+mobileMenu.classList.remove("active");
+
+}
+
+if(e.ctrlKey && e.key==="k"){
+
+e.preventDefault();
+
+searchBox.classList.add("active");
+
+searchInput.focus();
+
+}
+
+});
+
+/*==================================
+ Hero Buttons
+==================================*/
+
+document.querySelector(".primary")?.addEventListener("click",()=>{
+
+document.getElementById("news").scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+});
+
+document.querySelector(".secondary")?.addEventListener("click",()=>{
+
+window.open("https://rubika.ir/USERNAME","_blank");
+
+});
+
+/*==================================
+ Ready
+==================================*/
+
+console.log("✅ Amir Gamer Loaded");
