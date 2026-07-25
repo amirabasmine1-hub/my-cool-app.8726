@@ -1,0 +1,23 @@
+{
+  "news": [
+    {
+      "title": "به Amir Gamer خوش آمدید",
+      "description": "اولین خبر سایت منتشر شد.",
+      "date": "2026-07-25"
+    }
+  ],
+
+  "tutorials": [
+    {
+      "title": "آموزش FC25",
+      "description": "آموزش‌های جدید به زودی منتشر می‌شود."
+    }
+  ],
+
+  "downloads": [
+    {
+      "title": "مودهای Minecraft",
+      "link": "#"
+    }
+  ]
+}
