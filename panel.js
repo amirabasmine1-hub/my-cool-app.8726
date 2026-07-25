@@ -1,3 +1,9 @@
+import { db } from "./firebase.js";
+
+import {
+collection,
+addDoc
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 /* ==========================
    Login Protection
 ========================== */
@@ -41,7 +47,6 @@ const text=document.getElementById("newsText");
 const addBtn=document.getElementById("addNews");
 const newsList=document.getElementById("newsList");
 
-let news=JSON.parse(localStorage.getItem("news"))||[];
 
 /* نمایش اخبار */
 
