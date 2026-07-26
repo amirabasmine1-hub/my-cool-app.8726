@@ -2,24 +2,20 @@ import { db } from "./firebase.js";
 
 import {
 collection,
-addDoc
+addDoc,
+getDocs,
+deleteDoc,
+doc
 } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
-import { db } from "./firebase.js";
 
-import {
-collection,
-addDoc
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
 /* ==========================
    Login Protection
 ========================== */
 
 const PASSWORD = "Amir2026";
 
-alert("panel.js اجرا شد");
-
 const login = prompt("رمز ورود به پنل را وارد کنید:");
-                   
+
 if(login !== PASSWORD){
 
 document.body.innerHTML = `
@@ -44,45 +40,87 @@ flex-direction:column;
 throw new Error("Access Denied");
 
 }
-/*==================================
- Amir Gamer Admin Panel
-==================================*/
+
+/* ==========================
+   Elements
+========================== */
 
 const title=document.getElementById("newsTitle");
 const text=document.getElementById("newsText");
 const addBtn=document.getElementById("addNews");
 const newsList=document.getElementById("newsList");
 
+/* ==========================
+   Add News
+========================== */
 
-/* نمایش اخبار */
+addBtn.onclick=async()=>{
 
-function renderNews(){
+if(title.value.trim()===""||text.value.trim()===""){
+
+alert("همه فیلدها را پر کنید.");
+
+return;
+
+}
+
+try{
+
+await addDoc(collection(db,"news"),{
+
+title:title.value,
+
+text:text.value,
+
+date:new Date().toLocaleString("fa-IR")
+
+});
+
+title.value="";
+text.value="";
+
+alert("✅ خبر ثبت شد");
+
+renderNews();
+
+}catch(error){
+
+console.error(error);
+
+alert("❌ خطا در ثبت خبر");
+
+}
+
+};
+
+/* ==========================
+   Show News
+========================== */
+
+async function renderNews(){
 
 newsList.innerHTML="";
 
-news.forEach((item,index)=>{
+const snapshot=await getDocs(collection(db,"news"));
+   snapshot.forEach((item)=>{
+
+const data=item.data();
 
 newsList.innerHTML+=`
 
 <div class="newsItem">
 
-<h3>${item.title}</h3>
+<h3>${data.title}</h3>
 
-<p>${item.text}</p>
+<p>${data.text}</p>
+
+<small>${data.date}</small>
 
 <div class="actions">
 
-<button class="editBtn"
-onclick="editNews(${index})">
+<button onclick="deleteNews('${item.id}')">
 
-ویرایش
-
-</button>
-
-<button class="deleteBtn"
-onclick="deleteNews(${index})">
-
-حذف
+🗑 حذف
 
 </button>
 
@@ -96,86 +134,22 @@ onclick="deleteNews(${index})">
 
 }
 
-/* ثبت خبر */
+/* ==========================
+   Delete News
+========================== */
 
-addBtn.onclick=()=>{
+window.deleteNews=async(id)=>{
 
-if(title.value===""||text.value===""){
+if(!confirm("خبر حذف شود؟")) return;
 
-alert("همه فیلدها را پر کنید.");
-
-return;
-
-}
-
-news.unshift({
-
-title:title.value,
-
-text:text.value
-
-});
-
-localStorage.setItem(
-
-"news",
-
-JSON.stringify(news)
-
-);
-
-title.value="";
-
-text.value="";
+await deleteDoc(doc(db,"news",id));
 
 renderNews();
 
 };
 
-/* حذف */
-
-function deleteNews(index){
-
-if(confirm("این خبر حذف شود؟")){
-
-news.splice(index,1);
-
-localStorage.setItem(
-
-"news",
-
-JSON.stringify(news)
-
-);
-
-renderNews();
-
-}
-
-}
-
-/* ویرایش */
-
-function editNews(index){
-
-title.value=news[index].title;
-
-text.value=news[index].text;
-
-news.splice(index,1);
-
-localStorage.setItem(
-
-"news",
-
-JSON.stringify(news)
-
-);
-
-renderNews();
-
-}
-
-/* شروع */
+/* ==========================
+   Start
+========================== */
 
 renderNews();
