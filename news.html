@@ -112,7 +112,39 @@ newsList.innerHTML += `
 
 }
 </script>
-<script src="script.js"></script>
+<script>
+async function loadNews(){
+
+const response = await fetch("news.json");
+
+const news = await response.json();
+
+const newsList = document.getElementById("newsList");
+
+newsList.innerHTML="";
+
+news.forEach(item=>{
+
+newsList.innerHTML+=`
+<div class="news-card">
+
+<div class="news-content">
+
+<h3>${item.title}</h3>
+
+<p>${item.text}</p>
+
+</div>
+
+</div>
+`;
+
+});
+
+}
+
+loadNews();
+</script>
 
 </body>
 </html>
