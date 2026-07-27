@@ -474,3 +474,62 @@ current=(current+1)%slides.length;
 showSlide(current);
 
 },5000);
+// ==========================
+// Internet Check
+// ==========================
+
+function checkInternet(){
+
+if(!navigator.onLine){
+
+document.body.innerHTML=`
+
+<div style="
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#050816;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:Vazirmatn;
+color:white;
+text-align:center;
+padding:20px;
+z-index:99999;
+">
+
+<h1 style="font-size:45px;">📡 اینترنت قطع شد!</h1>
+
+<h2 style="color:#00d9ff;">
+ببخشید! 😅
+</h2>
+
+<p style="font-size:22px;">
+یکی پاش رفت تو سیم اینترنت! 🤣
+</p>
+
+<p style="opacity:.7;">
+به محض وصل شدن اینترنت، صفحه دوباره کار می‌کند.
+</p>
+
+</div>
+
+`;
+
+}
+
+}
+
+checkInternet();
+
+window.addEventListener("offline",checkInternet);
+
+window.addEventListener("online",()=>{
+
+location.reload();
+
+});
