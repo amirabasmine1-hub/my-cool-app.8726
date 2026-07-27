@@ -877,3 +877,289 @@ transform:translateY(-6px);
 box-shadow:0 0 25px rgba(0,217,255,.4);
 
 }
+/* ==========================
+   Hero News
+========================== */
+
+.hero-news{
+position:relative;
+min-height:75vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+background:
+radial-gradient(circle at top left,#00d9ff33,transparent 40%),
+radial-gradient(circle at bottom right,#8b5cf633,transparent 40%),
+linear-gradient(135deg,#050816,#0d1226,#111827);
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+backdrop-filter:blur(3px);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:850px;
+text-align:center;
+padding:20px;
+}
+
+.badge{
+display:inline-block;
+padding:8px 18px;
+border-radius:50px;
+background:#00d9ff22;
+border:1px solid #00d9ff;
+color:#00d9ff;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+.hero-content h1{
+font-size:55px;
+color:white;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:20px;
+color:#cbd5e1;
+line-height:2;
+margin-bottom:35px;
+}
+
+.hero-btn{
+display:inline-block;
+padding:14px 34px;
+border-radius:12px;
+background:#00d9ff;
+color:#050816;
+font-weight:bold;
+text-decoration:none;
+transition:.25s;
+}
+
+.hero-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 0 25px #00d9ff88;
+}
+/* ==========================
+   Animated Background
+========================== */
+
+body{
+
+background:
+radial-gradient(circle at 20% 20%,rgba(0,217,255,.08),transparent 35%),
+radial-gradient(circle at 80% 70%,rgba(139,92,246,.08),transparent 35%),
+linear-gradient(135deg,#050816,#0b1020,#111827);
+
+background-size:200% 200%;
+
+animation:bgMove 18s ease infinite;
+
+}
+
+@keyframes bgMove{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+/* ==========================
+   Glass Header
+========================== */
+
+header{
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px 40px;
+
+background:rgba(10,15,30,.65);
+
+backdrop-filter:blur(14px);
+
+-webkit-backdrop-filter:blur(14px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+transition:.3s;
+
+}
+
+.logo{
+
+font-size:28px;
+
+font-weight:700;
+
+color:#00d9ff;
+
+text-shadow:0 0 12px rgba(0,217,255,.5);
+
+}
+
+nav{
+
+display:flex;
+
+gap:25px;
+
+}
+
+nav a{
+
+color:#fff;
+
+text-decoration:none;
+
+font-size:17px;
+
+font-weight:500;
+
+padding:8px 14px;
+
+border-radius:10px;
+
+transition:.25s;
+
+}
+
+nav a:hover{
+
+background:rgba(0,217,255,.15);
+
+color:#00d9ff;
+
+ }
+/* ==========================
+   News Cards Pro
+========================== */
+
+.news-card{
+
+background:rgba(16,24,39,.75);
+
+backdrop-filter:blur(10px);
+
+-webkit-backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:20px;
+
+overflow:hidden;
+
+transition:.35s;
+
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.news-card:hover{
+
+transform:translateY(-10px);
+
+border-color:#00d9ff;
+
+box-shadow:0 0 30px rgba(0,217,255,.25);
+
+}
+
+.news-card img{
+
+width:100%;
+
+height:220px;
+
+object-fit:cover;
+
+transition:.4s;
+
+}
+
+.news-card:hover img{
+
+transform:scale(1.05);
+
+}
+
+.news-content{
+
+padding:20px;
+
+}
+
+.news-content h3{
+
+color:#ffffff;
+
+font-size:22px;
+
+margin-bottom:12px;
+
+}
+
+.news-content p{
+
+color:#cbd5e1;
+
+line-height:1.9;
+
+font-size:15px;
+
+margin-bottom:18px;
+
+}
+
+.news-btn{
+
+display:inline-block;
+
+padding:10px 22px;
+
+border-radius:12px;
+
+background:#00d9ff;
+
+color:#050816;
+
+font-weight:bold;
+
+text-decoration:none;
+
+transition:.25s;
+
+}
+
+.news-btn:hover{
+
+background:#22e7ff;
+
+box-shadow:0 0 20px rgba(0,217,255,.45);
+
+}
