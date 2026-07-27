@@ -657,3 +657,22 @@
 <button class="next">❯</button>
 
   </section>
+<style>
+  /* کاهش شدید انیمیشن‌ها برای روان‌تر شدن */
+  *, *::before, *::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* اگر انیمیشن‌ها با keyframeها انجام میشن هم پوشش می‌ده */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition-duration: 0.001ms !important;
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
