@@ -1233,3 +1233,86 @@ left:20px;
 right:20px;
 
 }
+/* ==========================
+   Footer
+========================== */
+
+.footer{
+
+margin-top:80px;
+
+background:#0b1120;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+padding:50px 30px 20px;
+
+}
+
+.footer-container{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:40px;
+
+max-width:1200px;
+
+margin:auto;
+
+}
+
+.footer-box h3{
+
+color:#00d9ff;
+
+margin-bottom:15px;
+
+}
+
+.footer-box p{
+
+color:#cbd5e1;
+
+line-height:1.8;
+
+}
+
+.footer-box a{
+
+display:block;
+
+color:#cbd5e1;
+
+text-decoration:none;
+
+margin:10px 0;
+
+transition:.25s;
+
+}
+
+.footer-box a:hover{
+
+color:#00d9ff;
+
+padding-right:8px;
+
+}
+
+.copyright{
+
+margin-top:35px;
+
+text-align:center;
+
+color:#94a3b8;
+
+font-size:14px;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+padding-top:20px;
+
+}
