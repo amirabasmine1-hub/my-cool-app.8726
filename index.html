@@ -676,3 +676,21 @@
     }
   }
 </style>
+<script>
+  (function () {
+    // اگر آنلاین نیستیم، مستقیم آفلاین صفحه را نشان بده
+    if (!navigator.onLine) {
+      window.location.href = './offline.html';
+    }
+
+    // وقتی اینترنت قطع/وصل شد
+    window.addEventListener('offline', () => {
+      window.location.href = './offline.html';
+    });
+
+    // وقتی وصل شد، خودکار برگرد
+    window.addEventListener('online', () => {
+      window.location.href = './index.html';
+    });
+  })();
+</script>
